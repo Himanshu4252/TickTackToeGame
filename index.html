@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="container">
+        <div class="use " id="use1">
+            <i class="fa-solid fa-user" id="icon1"></i>
+            <h3 id="user1">Player 1</h3>
+            <p class="winner" id="winner1"></p>
+        </div>
+        <div id="mid">
+        <div id="topText"><h2>Tick-Tack-Toe</h2></div>
+        <div id="game">
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+            <button class="box"></button>
+        </div>
+        <div id="res">
+            <button id="reset">RESET</button>
+        </div>
+    </div>
+        <div class="use" id="use2" >
+            <i class="fa-solid fa-user" id="icon2"></i>
+            <h3 id="user2">Player 2</h3>
+            <p class="winner" id="winner2"></p>
+        </div>
+       
+    </div>
+    <div id="credits">
+        <div id="dabba">
+            <div id="naam"><h3>Himanshu Dudhpuri</h3></div>
+            <div id="social">
+                <div class="dibbi"><a href="https://www.linkedin.com/in/himanshu-dudhpuri-ba9824251?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa-brands fa-linkedin ico"></i></a></div>
+                <div class="dibbi"><a href="https://www.instagram.com/himanshu_dudhpuri333?igsh=MWpiaWZka3hubjZrOA=="><i class="fa-brands fa-instagram ico"></i></a></div>
+                <div class="dibbi"><a href="https://www.facebook.com/share/ud92ZW1Yz1cWfBj9/?mibextid=qi2Omg"><i class="fa-brands fa-facebook ico"></i></a></div>
+                <div class="dibbi"><a href="https://x.com/Himanshu4252?s=08 "><i class="fa-brands fa-x-twitter ico"></i></a></div>
+                <div class="dibbi"><a href="mailto:himanshuhddudhpuri4252@gmail.com"><i class="fa-solid fa-envelope ico"></i></a></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let boxes = document.querySelectorAll(".box");
+        let resetBtn = document.getElementById("reset");
+        let userOne = document.getElementById("use1");
+        let winner1 = document.getElementById("winner1");
+        let userTwo = document.getElementById("use2");
+        let winner2 = document.getElementById("winner2")
+
+        let userTurn = true;
+
+        const winPattern = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+        boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        console.log("box clicked.");
+        if(userTurn){
+            box.textContent = "O";
+            userTurn = false;
+           
+        }
+        else{
+            box.textContent = "X";
+            userTurn = true;
+        }
+        box.disabled = true;
+        checkwinner();
+    });
+});
+const btnEna = () =>{
+    for(let box of boxes){
+        box.disabled = false;
+        box.textContent = "";
+    }
+}
+const btnDis = () =>{
+    for(let box of boxes){
+        box.disabled = true;
+    }
+}
+const resetGame = () => {
+    userTurn = true;
+    btnEna();
+    userOne.classList.remove("userTurn");
+    winner1.innerText = "";
+    userTwo.classList.remove("userTurn");
+    winner2.innerText = "";
+    resetBtn.textContent = "RESET";
+    resetBtn.style.backgroundColor = "Red";
+
+}
+const checkwinner = () =>{
+    for (let pattern of winPattern){
+        let pos1 = boxes[pattern[0]].textContent;
+        let pos2 = boxes[pattern[1]].textContent;
+        let pos3 = boxes[pattern[2]].textContent;
+        if(pos1 !== "" && pos2 !== "" && pos3 !== ""){
+            if(pos1 === pos2 && pos2 === pos3){
+                console.log("winner", pos1);
+                if(userTurn === false){
+                    console.log("player 1 is winner");
+                    winner1.innerText = "winner";
+                    resetBtn.textContent = "new game";
+                    resetBtn.style.backgroundColor = "green";
+                    userOne.classList.add("userTurn");
+
+                }
+                else{
+                    console.log("player 2 is winner");
+                    winner2.innerText = "winner";
+                    resetBtn.textContent = "new game";
+                    resetBtn.style.backgroundColor = "green";
+                    userTwo.classList.add("userTurn");
+
+                }
+                btnDis();
+            }
+        }
+    };
+}
+resetBtn.addEventListener("click", resetGame)
+        
+    </script>
+</body>
+</html>

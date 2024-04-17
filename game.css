@@ -1,0 +1,145 @@
+*{  background-color: #011627;
+    margin: 0;
+    padding: 0;
+}
+#container{
+    margin: 2vh;
+    display: flex;
+    flex-direction: row;
+    gap: 14vh;
+    justify-content: center;
+    align-items: center;
+}
+#topText{
+    color: #FF9F1C;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#game{
+    margin-top: 4vh;
+    height: 60svh;
+    width: 60svh;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vh;
+
+}
+.box{
+    cursor: pointer;
+    background-color: #e5f0b6;
+    border: none;
+    height: 19svh;
+    width: 19svh;
+    border-radius: 10px;
+    font-size: 10vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.box:disabled{
+    cursor:not-allowed;
+    color: black;
+}
+#mid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.use{
+    height: 22svh;
+    width: 22svh;
+    font-size: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid white;
+    border-radius: 15px;
+    color: rgb(0, 102, 255);
+}
+#user1{
+    font-size: 4vh;
+    color: white;
+    margin-top: 1vh;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#user2{
+    margin-top: 1vh;
+    font-size: 4vh;
+    color: white;
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+#res{
+    margin-top: 4vh;
+}
+#reset{
+    color: white;
+    height: 8vh;
+    width: 20vw;
+    background-color: rgb(255, 0, 0);
+    color: black;
+    font-weight: 900;
+    border-radius: 4vh;
+}
+.player{
+    color:rgb(255, 255, 255);
+}
+.userTurn{
+    color: rgb(73, 250, 3);
+    animation-name: ankii;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+@keyframes ankii{
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.winner{
+    
+    color: #ffda0a;
+}
+#credits{
+    display: flex;
+    min-height: 12vh;
+    flex-direction: column;
+    align-items: flex-end;
+}
+#dabba{
+    margin-right: 16vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+}
+#naam{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: rgb(255, 252, 216);
+
+}
+#social{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+}
+.dibbi{
+    height: 10vh;
+    width: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ico{
+    color: rgb(255, 252, 211);
+    font-size: 8vh;
+}
